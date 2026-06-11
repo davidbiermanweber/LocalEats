@@ -1,4 +1,2 @@
-@model UserAuthApp.Models.User
-
-<h2>Account created sucessfully!</h2>
-<p>Welcome, @Model.First_name @Model.Last_name!</p>
+<h2>Account created successfully!</h2>
+<p>Welcome, @TempData["FirstName"] @TempData["LastName"]!</p>

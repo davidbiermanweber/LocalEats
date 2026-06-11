@@ -3,9 +3,13 @@ namespace UserAuthApp.Models
 {
     public class AppDbContext : DbContext
     {
-        // contructor goes here
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        // DbSet goes here
+
         public DbSet<User> AppUsers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().ToTable("app_users");
+        }
     }
 }

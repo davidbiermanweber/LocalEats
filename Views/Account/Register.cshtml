@@ -1,27 +1,30 @@
 @model UserAuthApp.Models.User
 
-<h2>Register</h2>
-
-<form method="post">
-    <div>
-        <label>First Name</label>
-        <input asp-for="First_name" />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Register</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input asp-for="First_name" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input asp-for="Last_name" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input asp-for="Phone_number" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
     </div>
-    <div>
-        <label>Last Name</label>
-        <input asp-for="Last_name" />
-    </div>
-    <div>
-        <label>Email</label>
-        <input asp-for="Email" />
-    </div>
-    <div>
-        <label>Phone Number</label>
-        <input asp-for="Phone_number" />
-    </div>
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" type="password" />
-    </div>
-    <button type="submit">Register</button>
-</form>
+</div>

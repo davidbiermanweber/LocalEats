@@ -30,7 +30,14 @@ namespace UserAuthApp.Controllers
         {
             _context.AppUsers.Add(user);
             _context.SaveChanges();
-            return View("RegisterSuccess", user);
+            TempData["FirstName"] = user.First_name;
+            TempData["LastName"] = user.Last_name;
+            return RedirectToAction("RegisterSuccess");
+        }
+
+        public IActionResult RegisterSuccess()
+        {
+            return View();
         }
 
         // POST: Login
