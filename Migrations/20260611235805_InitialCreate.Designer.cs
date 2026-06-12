@@ -11,7 +11,7 @@ using UserAuthApp.Models;
 namespace UserAuthApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260611051004_InitialCreate")]
+    [Migration("20260611235805_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,35 +26,35 @@ namespace UserAuthApp.Migrations
 
             modelBuilder.Entity("UserAuthApp.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("First_name")
+                    b.Property<string>("first_name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Last_name")
+                    b.Property<string>("last_name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("password")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Phone_number")
+                    b.Property<string>("phone_number")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.ToTable("AppUsers");
+                    b.ToTable("app_users", (string)null);
                 });
 #pragma warning restore 612, 618
         }
