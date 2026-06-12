@@ -30,8 +30,8 @@ namespace UserAuthApp.Controllers
         {
             _context.AppUsers.Add(user);
             _context.SaveChanges();
-            TempData["FirstName"] = user.First_name;
-            TempData["LastName"] = user.Last_name;
+            TempData["FirstName"] = user.first_name;
+            TempData["LastName"] = user.last_name;
             return RedirectToAction("RegisterSuccess");
         }
 
@@ -44,7 +44,7 @@ namespace UserAuthApp.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            var user = _context.AppUsers.FirstOrDefault(u => u.Email == email && u.Password == password);
+            var user = _context.AppUsers.FirstOrDefault(u => u.email == email && u.password == password);
 
             if(user != null)
             {

@@ -2,14 +2,11 @@ namespace UserAuthApp.Models
 {
     public class User
     {
-        public int Id { get; set; }
-        public string First_name { get; set; } = string.Empty;
-        public string Last_name { get; set; } = string.Empty;
-
-        public string Email { get; set; } = string.Empty;
-
-        public string Phone_number { get; set; } = string.Empty;
-
-        public string Password { get; set; } = string.Empty;
+        public int id { get; set; }
+        public string first_name { get; set; } = string.Empty;
+        public string last_name { get; set; } = string.Empty;
+        public string email { get; set; } = string.Empty;
+        public string phone_number { get; set; } = string.Empty;
+        public string password { get; set; } = string.Empty;
     }
 }
