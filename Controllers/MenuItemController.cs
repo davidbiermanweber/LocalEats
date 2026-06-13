@@ -18,6 +18,12 @@ namespace UserAuthApp.Controllers
             return View();
         }
 
+        public IActionResult Index()
+        {
+            var items = _context.MenuItem.ToList();
+            return View(items);
+        }
+
 
         [HttpPost]
         public IActionResult Create(MenuItem menuItem)
