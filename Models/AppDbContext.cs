@@ -7,9 +7,12 @@ namespace UserAuthApp.Models
 
         public DbSet<User> AppUsers { get; set; }
 
+        public DbSet<MenuItem> MenuItem {get; set;}
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("app_users");
+            modelBuilder.Entity<MenuItem>().ToTable("menu_item");
         }
     }
 }
