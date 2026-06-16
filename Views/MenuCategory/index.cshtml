@@ -1,0 +1,6 @@
+@model List<UserAuthApp.Models.MenuCategory>
+
+@foreach (var item in Model)
+{
+    <p> @item.name @item.description</p>
+}
