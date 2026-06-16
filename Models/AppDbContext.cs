@@ -11,11 +11,15 @@ namespace UserAuthApp.Models
 
         public DbSet<MenuCategory> MenuCategory {get; set;}
 
+        public DbSet<MenuAccess> MenuAccess {get; set;}
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("app_users");
             modelBuilder.Entity<MenuItem>().ToTable("menu_item");
             modelBuilder.Entity<MenuCategory>().ToTable("menu_category");
+            modelBuilder.Entity<MenuAccess>().ToTable("menu_access");
+
         }
     }
 }
