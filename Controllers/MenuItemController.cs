@@ -15,6 +15,7 @@ namespace UserAuthApp.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categories = _context.MenuCategory.ToList();
             return View();
         }
 
