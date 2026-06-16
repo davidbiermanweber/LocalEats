@@ -19,10 +19,16 @@ namespace UserAuthApp.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? category_id)
         {
-            var items = _context.MenuItem.ToList();
-            return View(items);
+            ViewBag.Categories = _context.MenuCategory.ToList();
+            ViewBag.SelectedCategory = category_id;
+
+            var items = category_id.HasValue
+                ? _context.MenuItem.Where(m => m.category_id == category_id).ToList()
+                : _context.MenuItem.ToList();
+
+                return View(items);
         }
 
 

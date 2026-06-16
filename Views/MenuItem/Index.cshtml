@@ -1,6 +1,26 @@
 @model List<UserAuthApp.Models.MenuItem>
 
-@foreach (var item in Model)
-{
-    <p> @item.item_name @item.item_description</p>
-}
+<div class="row">
+    <div class="col-md-3">
+        <h5>Categories</h5>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="/MenuItem/Index">All</a>
+            </li>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <li class="list-group-item">
+                    <a href="/MenuItem/Index?category_id=@category.id">@category.name</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <h5>Menu Items</h5>
+        @foreach (var item in Model)
+        {
+            <p>@item.item_name - @item.item_description</p>
+        }
+    </div>
+</div>
+
