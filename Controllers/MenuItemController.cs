@@ -21,15 +21,28 @@ namespace UserAuthApp.Controllers
 
         public IActionResult Index(int? category_id)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+                return RedirectToAction("Login", "Account");
+
             ViewBag.Categories = _context.MenuCategory.ToList();
             ViewBag.SelectedCategory = category_id;
 
-            var items = category_id.HasValue
-                ? _context.MenuItem.Where(m => m.category_id == category_id).ToList()
-                : _context.MenuItem.ToList();
+            var accessibleItemIds = _context.MenuAccess
+                .Where(a => a.user_id == userId && a.can_view)
+                .Select(a => a.menu_item_id)
+                .ToList();
 
-                return View(items);
+            var items = _context.MenuItem
+                .Where(m => accessibleItemIds.Contains(m.id))
+                .ToList();
+
+            if (category_id.HasValue)
+                items = items.Where(m => m.category_id == category_id).ToList();
+
+            return View(items);
         }
+
 
 
         [HttpPost]

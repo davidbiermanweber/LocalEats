@@ -48,13 +48,16 @@ namespace UserAuthApp.Controllers
 
             if(user != null)
             {
+                HttpContext.Session.SetInt32("UserId", user.id);
                 return View("LoginSuccess", user);
             }
+
             else
             {
                 ViewBag.Error = "Invalid email or password.";
                 return View();
             }
+            
         }
     }
 }
