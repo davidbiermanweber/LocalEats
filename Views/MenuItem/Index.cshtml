@@ -25,6 +25,11 @@
                     <strong>@item.item_name</strong><br />
                     $@item.price<br />
                     @item.item_description<br />
+                    @{
+                        var category = ((List<UserAuthApp.Models.MenuCategory>)ViewBag.Categories)
+            .FirstOrDefault(c => c.id == item.category_id);
+                    }
+                    <p>Category: @category?.name</p>
                 </div>
             }
         </div>

@@ -24,6 +24,12 @@ namespace UserAuthApp.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+
         // POST: Register action goes here
         [HttpPost]
         public IActionResult Register(User user)
@@ -46,10 +52,11 @@ namespace UserAuthApp.Controllers
         {
             var user = _context.AppUsers.FirstOrDefault(u => u.email == email && u.password == password);
 
-            if(user != null)
+            if (user != null)
             {
                 HttpContext.Session.SetInt32("UserId", user.id);
-                return View("LoginSuccess", user);
+                HttpContext.Session.SetString("FirstName", user.first_name);
+                return RedirectToAction("Index", "MenuItem");
             }
 
             else
@@ -57,7 +64,7 @@ namespace UserAuthApp.Controllers
                 ViewBag.Error = "Invalid email or password.";
                 return View();
             }
-            
+
         }
     }
 }
